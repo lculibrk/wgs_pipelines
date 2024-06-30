@@ -1,0 +1,7 @@
+from lib.endpoints import gateway
+
+include: "snakemake_modules/wgs_alignment/rules.smk"
+
+rule all:
+    input:
+        __file__
