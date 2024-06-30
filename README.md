@@ -12,7 +12,7 @@ To use the API, `pip install db/api/`
 ```cd gatk_bestpractices_mapping```
 
 ### Quick Execute
-```python ./executor.py [--idfile ID_FILE | --id SAMPLE_ID] --pipeline PIPELINE_NAME [snakemake options]```
+```python ./runner.py [--idfile ID_FILE | --id SAMPLE_ID] --pipeline PIPELINE_NAME [snakemake options]```
 
 ### Overview
 
@@ -48,9 +48,9 @@ SNV calling:
 
 ### How the pipelines work
 
-These pipelines are intended to be as simple to execute as possible. `gateway()`,  a convenience function, exists to enable the quick accession of the endpoint of an analysis for a given entity (study/sample/run). For example, a call to `gateway()` for the FASTQ endpoint determines the appropriate source for the FASTQ files based on their entries in the `petljakdb`. Similarly, a `gateway()` call for the `MUTECT` endpoint should determine whether the samples are cell lines or patients, and thereby determine which module to use to satisfy the `MUTECT` endpoint.
+These pipelines are intended to be as simple to execute as possible. `gateway()`,  a convenience function, exists to enable the quick accession of the endpoint of an analysis for a given entity (study/sample/run). For example, a call to `gateway()` for the FASTQ endpoint determines the appropriate source for the FASTQ files based on their entries in the `genomicsdb`. Similarly, a `gateway()` call for the `MUTECT` endpoint should determine whether the samples are cell lines or patients, and thereby determine which module to use to satisfy the `MUTECT` endpoint.
 
-Overall, the `petljakdb` should store all the metadata required to handle how the pipelines are run. The pipeline framework should, therefore, utilize this information to reproducibly and consistently execute analyses on data entities in a generalizable fashion. 
+Overall, the `genomicsdb` should store all the metadata required to handle how the pipelines are run. The pipeline framework should, therefore, utilize this information to reproducibly and consistently execute analyses on data entities in a generalizable fashion. 
 
 ### To add a new pipeline:
 1. Create a new Snakefile module under `modules/`
